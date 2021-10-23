@@ -1,9 +1,7 @@
 import React, { useState } from "react";
+import CounterTitle from "./CounterTitle";
 
-function Counter() {
-  let [counter, setCounter] = useState(0);
-  //   const [x, y, ...rest] = [1, 2, 3, 4, 5];
-
+function Counter({ title, description, counter, setCounter }) {
   console.log("Counter rendered", counter);
 
   function counterIncrease() {
@@ -16,6 +14,9 @@ function Counter() {
 
   return (
     <div>
+      <CounterTitle title="Patika" description="Inveon Bootcamp" />
+      <CounterTitle title="Dev" description="Inveon Bootcamp" />
+      <CounterTitle title={title} description={description} />
       <button onClick={counterIncrease}> Artır </button>
       <h2>{counter}</h2>
       <button onClick={counterDecrease}> Azalt </button>
