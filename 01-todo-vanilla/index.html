@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner-container">
+        <h1>TODOS</h1>
+        <hr />
+        <input type="text" id="text-input" class="input-todo" />
+        <input type="button" value="Kaydet" id="button-save" />
+        <ul id="ul-list"></ul>
+      </div>
+    </div>
+    <script>
+      const taskList = [
+        "Daha Güzel Tasarım",
+        "Todo lar çalışır hale getirilicek",
+        "herhagi bir task",
+      ];
+
+      // create element - ul appendChild yap
+      // kopyala yapıştır yaptık, fonksiyonla yapsak daha iyiydi
+      // kod çirkin duruyor, kod okunaklı güzel görünsün.
+      // javascript kodunu ayır
+      // querySelector kullanalım (getElementById yerine)
+      // Özgür -  Ahmet Suhan için ->  css'lleri obje yap  -> en son "li" elementi renklendir.
+      // Taskları localStorage'e kaydet ve sayfa yenilendiğinde oradan al
+
+      const button = document.getElementById("button-save");
+      const textInput = document.getElementById("text-input");
+      const ulList = document.getElementById("ul-list");
+      let listElements = "";
+      taskList.map((item, index) => {
+        console.log(item);
+        const myTask = `
+        <li id="li_${index}">
+             ${item} 
+            <input id="btn_sil_${index}"
+             type="button" 
+             value="Sil"> 
+          </li>`;
+        listElements += myTask;
+      });
+      ulList.innerHTML = listElements;
+
+      taskList.map((item, index) => {
+        document
+          .getElementById("btn_sil_" + index)
+          .addEventListener("click", function () {
+            console.log(item);
+          });
+      });
+
+      button.addEventListener("click", function (e) {
+        taskList.push(textInput.value);
+
+        let listElements = "";
+        taskList.map((item) => {
+          console.log(item);
+          const myTask = `<li>${item}</li>`;
+          listElements += myTask;
+        });
+        ulList.innerHTML = listElements;
+      });
+    </script>
+  </body>
+</html>
