@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 
 const Header = () => (
@@ -23,11 +24,14 @@ function Body() {
 
 function App() {
   return (
-    <div>
-      <Header />
-      <hr />
-      <Body />
-    </div>
+    <>
+      <h3>title</h3>
+      <div>
+        <Header />
+        <hr />
+        <Body />
+      </div>
+    </>
   );
 }
 
