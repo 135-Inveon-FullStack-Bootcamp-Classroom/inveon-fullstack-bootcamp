@@ -9,7 +9,7 @@ const Header = () => (
 );
 
 function renderMap() {
-  return [1, 2, 3, 4, 5].map((item) => <h6>{item}</h6>);
+  return [1, 2, 3, 4, 5, 5].map((item, index) => <Header key={index} />);
 }
 
 function Body() {
