@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { CalcContext } from "../CalcContext";
+
 const styles = {
   screenSection: {
     width: "100%",
@@ -21,10 +24,21 @@ const styles = {
 };
 
 const ScreenSection = () => {
+  const { mainText, lastResult, currentOperation } = useContext(CalcContext);
+
+  const renderCaption = () => {
+    if (lastResult && currentOperation)
+      return (
+        <span style={styles.caption}>
+          {lastResult} {currentOperation}
+        </span>
+      );
+  };
+
   return (
     <div style={styles.screenSection}>
-      <span style={styles.caption}>25 +</span>
-      <span style={styles.mainText}>5</span>
+      {renderCaption()}
+      <span style={styles.mainText}>{mainText}</span>
     </div>
   );
 };
