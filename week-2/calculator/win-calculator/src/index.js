@@ -6,7 +6,7 @@ import { CalcProvider } from "./CalcContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CalcProvider theme="dark">
+    <CalcProvider>
       <App />
     </CalcProvider>
   </React.StrictMode>,

@@ -29,9 +29,7 @@ const getHoveredKeyTextStyle = (hovered) => {
 };
 
 const KeyButton = ({ label, isBlue, isNumber }) => {
-  const { theme } = useContext(CalcContext);
-
-  console.log(theme);
+  const values = useContext(CalcContext);
 
   const [hovered, setHovered] = useState(false);
 
