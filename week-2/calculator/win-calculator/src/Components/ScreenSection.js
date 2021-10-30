@@ -6,12 +6,12 @@ const styles = {
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "flex-end",
+    fontFamily: "arial",
   },
   mainText: {
     color: "#fff",
     fontSize: 40,
     padding: 10,
-    fontWeight: "bold",
   },
   caption: {
     color: "#999",
