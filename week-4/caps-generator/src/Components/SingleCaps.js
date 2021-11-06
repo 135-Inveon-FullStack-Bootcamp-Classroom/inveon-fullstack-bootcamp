@@ -1,7 +1,21 @@
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
+import styled from "@emotion/styled";
+
 import { useParams } from "react-router-dom";
 import { useMemesContext } from "../Contexts/MemesContext";
 import Layout from "./Layout";
+
+// const Image = styled.img`
+//   max-height: 400px;
+//   border: 1px solid #333;
+//   border-radius: 5px;
+// `;
+
+const Image = styled.img((props) => ({
+  maxHeight: 400,
+  border: "1px solid #333",
+  borderRadius: props.borderRadius,
+}));
 
 const SingleCaps = () => {
   const { id } = useParams();
@@ -19,8 +33,8 @@ const SingleCaps = () => {
 
   return (
     <Layout>
-      <h2>Single Caps</h2>
-      <pre>{JSON.stringify(meme, 4, null)}</pre>
+      <Typography variant="h2">{meme.name}</Typography>
+      <Image src={meme.url} alt={meme.name} borderRadius={35} />
     </Layout>
   );
 };
