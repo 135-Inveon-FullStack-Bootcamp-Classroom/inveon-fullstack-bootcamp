@@ -8,13 +8,7 @@ import MemCard from "./MemeCard";
 import { useMemesContext } from "../Contexts/MemesContext";
 
 const CapsList = () => {
-  const { memes, setMemes } = useMemesContext();
-
-  useEffect(() => {
-    fetch("https://api.imgflip.com/get_memes")
-      .then((response) => response.json())
-      .then((result) => setMemes(result.data.memes));
-  }, []);
+  const { memes } = useMemesContext();
 
   if (!memes) return <p>Loading</p>;
 
