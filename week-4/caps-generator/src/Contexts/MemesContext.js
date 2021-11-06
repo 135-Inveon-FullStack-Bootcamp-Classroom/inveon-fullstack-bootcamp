@@ -18,7 +18,7 @@ const MemesProvider = ({ children }) => {
   };
 
   return (
-    <MemesContext.Provider value={{ memes, setMemes, getMemeById }}>
+    <MemesContext.Provider value={{ memes, getMemeById }}>
       {children}
     </MemesContext.Provider>
   );

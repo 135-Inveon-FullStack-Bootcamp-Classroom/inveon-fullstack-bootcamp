@@ -16,8 +16,6 @@ const CapsList = () => {
       </Layout>
     );
 
-  console.log({ memes });
-
   return (
     <Layout>
       <Grid
