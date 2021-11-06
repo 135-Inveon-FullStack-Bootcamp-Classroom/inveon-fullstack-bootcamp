@@ -1,9 +1,15 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-const MemesContext = createContext();
+export const MemesContext = createContext();
 
 const MemesProvider = ({ children }) => {
-  return <MemesContext.Provider>{children}</MemesContext.Provider>;
+  const [memes, setMemes] = useState();
+
+  return (
+    <MemesContext.Provider value={{ memes, setMemes }}>
+      {children}
+    </MemesContext.Provider>
+  );
 };
 
 export default MemesProvider;
