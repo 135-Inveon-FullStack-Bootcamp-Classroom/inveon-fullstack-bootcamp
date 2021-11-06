@@ -12,4 +12,6 @@ const MemesProvider = ({ children }) => {
   );
 };
 
+export const useMemesContext = () => useContext(MemesContext);
+
 export default MemesProvider;

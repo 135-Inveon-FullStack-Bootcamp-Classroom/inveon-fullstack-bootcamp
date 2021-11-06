@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import { MemesContext } from "../Contexts/MemesContext";
+import { useEffect, useState } from "react";
 
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import Layout from "./Layout";
 import MemCard from "./MemeCard";
 
+import { useMemesContext } from "../Contexts/MemesContext";
+
 const CapsList = () => {
-  const { memes, setMemes } = useContext(MemesContext);
+  const { memes, setMemes } = useMemesContext();
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
