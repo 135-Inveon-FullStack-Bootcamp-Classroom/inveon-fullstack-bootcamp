@@ -9,7 +9,7 @@ export default function MemCard({ img, title }) {
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardActionArea>
-        <CardMedia component="img" image={img} alt={title} />
+        <CardMedia component="img" image={img} alt="green iguana" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
