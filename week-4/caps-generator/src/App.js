@@ -3,15 +3,18 @@ import SingleCaps from "./Components/SingleCaps";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App(props) {
-  console.log({ props });
+import MemesProvider from "./Contexts/MemesContext";
+
+function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<CapsList />} />
-        <Route path="/single-caps" element={<SingleCaps />} />
-      </Routes>
-    </Router>
+    <MemesProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<CapsList />} />
+          <Route path="/single-caps/:id" element={<SingleCaps />} />
+        </Routes>
+      </Router>
+    </MemesProvider>
   );
 }
 
