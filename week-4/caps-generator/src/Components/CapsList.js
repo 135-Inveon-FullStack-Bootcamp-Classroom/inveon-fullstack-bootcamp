@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import MemCard from "./MemeCard";
 
 import { useMemesContext } from "../Contexts/MemesContext";
+import { Link } from "react-router-dom";
 
 const CapsList = () => {
   const { memes } = useMemesContext();
@@ -27,7 +28,9 @@ const CapsList = () => {
       >
         {memes.map((meme) => (
           <Grid item md={4}>
-            <MemCard img={meme.url} title={meme.name} />
+            <Link to={`/single-caps/${meme.id}`}>
+              <MemCard img={meme.url} title={meme.name} />
+            </Link>
           </Grid>
         ))}
       </Grid>
