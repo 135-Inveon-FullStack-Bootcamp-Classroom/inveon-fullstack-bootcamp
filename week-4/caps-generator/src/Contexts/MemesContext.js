@@ -11,8 +11,14 @@ const MemesProvider = ({ children }) => {
       .then((result) => setMemes(result.data.memes));
   }, []);
 
+  const getMemeById = (id) => {
+    if (!memes) return null;
+
+    return memes.find((meme) => meme.id === id);
+  };
+
   return (
-    <MemesContext.Provider value={{ memes, setMemes }}>
+    <MemesContext.Provider value={{ memes, setMemes, getMemeById }}>
       {children}
     </MemesContext.Provider>
   );

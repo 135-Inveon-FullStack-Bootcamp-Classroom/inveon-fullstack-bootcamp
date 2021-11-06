@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-import { Grid } from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 
 import Layout from "./Layout";
 import MemCard from "./MemeCard";
@@ -10,7 +8,12 @@ import { useMemesContext } from "../Contexts/MemesContext";
 const CapsList = () => {
   const { memes } = useMemesContext();
 
-  if (!memes) return <p>Loading</p>;
+  if (!memes)
+    return (
+      <Layout>
+        <CircularProgress />
+      </Layout>
+    );
 
   console.log({ memes });
 
