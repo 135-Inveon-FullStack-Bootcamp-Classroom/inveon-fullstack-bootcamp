@@ -1,10 +1,17 @@
-import "./App.css";
+import CapsList from "./Components/CapsList";
+import SingleCaps from "./Components/SingleCaps";
 
-function App() {
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+function App(props) {
+  console.log({ props });
   return (
-    <div className="App">
-      <h2>new project</h2>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<CapsList />} />
+        <Route path="/single-caps" element={<SingleCaps />} />
+      </Routes>
+    </Router>
   );
 }
 
