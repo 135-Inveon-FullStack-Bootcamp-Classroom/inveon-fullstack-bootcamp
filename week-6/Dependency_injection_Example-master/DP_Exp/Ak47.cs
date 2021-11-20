@@ -2,11 +2,11 @@
 
 namespace DP_Exp
 {
-    public class Deagle : ICounterGun
+    class Ak47 : ITeroristGun
     {
         public void Atis()
         {
-            Console.WriteLine("Deagle ile Atis Yapıldı");
+            Console.WriteLine("Ak 47 atış yapıldı");
         }
     }
 }

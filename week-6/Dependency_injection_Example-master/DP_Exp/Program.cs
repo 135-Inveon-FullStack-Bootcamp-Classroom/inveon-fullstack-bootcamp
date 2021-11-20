@@ -6,9 +6,21 @@ namespace DP_Exp
     {
         static void Main(string[] args)
         {
+            FightAsCounter();
+            //FightAsTerorist();
+        }
+
+        private static void FightAsTerorist()
+        {
+            //...
+        }
+
+        private static void FightAsCounter()
+        {
             Console.WriteLine("silah seç");
             int silahNo;
-            IGun gun;
+
+            ICounterGun gun;
 
             silahNo = int.Parse(Console.ReadLine());
 
@@ -19,14 +31,13 @@ namespace DP_Exp
             else if (silahNo == 2)
             {
                 gun = new Pompali();
-
             }
             else
             {
                 gun = new Deagle();
             }
 
-            var player = new Player(gun);
+            var player = new Counter(gun);
             player.AtesEt();
         }
     }

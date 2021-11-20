@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DP_Exp
 {
-    public class Taramali: IGun
+    public class Taramali : ICounterGun, ITeroristGun
     {
         public void Atis()
         {

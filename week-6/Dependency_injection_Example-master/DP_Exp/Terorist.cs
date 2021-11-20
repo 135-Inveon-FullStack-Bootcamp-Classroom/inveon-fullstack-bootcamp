@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DP_Exp
 {
-    public class Player
+    public class Terorist : IPlayer
     {
-        private IGun _gun;
+        private ITeroristGun _gun;
 
-        public Player(IGun gun)
+        public Terorist(ITeroristGun gun)
         {
             _gun = gun;
         }
@@ -26,7 +22,6 @@ namespace DP_Exp
         {
             Console.WriteLine("Yürü");
         }
-
 
     }
 }
