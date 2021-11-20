@@ -1,11 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoviesWebApi
 {
@@ -13,7 +8,9 @@ namespace MoviesWebApi
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Main 1");
             CreateHostBuilder(args).Build().Run();
+            Console.WriteLine("Main 2");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

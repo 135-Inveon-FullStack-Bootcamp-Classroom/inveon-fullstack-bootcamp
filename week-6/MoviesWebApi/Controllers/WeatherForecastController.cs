@@ -42,7 +42,7 @@ namespace MoviesWebApi.Controllers
             return "Murat";
         }
 
-        [HttpPost("movies")]
+        [HttpPost("post-movies")]
         public IActionResult SaveMovie([FromBody] Movie movie, [FromQuery] string x)
         {
             return Ok(movie);
