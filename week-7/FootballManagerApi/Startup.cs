@@ -24,10 +24,12 @@ namespace FootballManagerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ITeamService, TeamService>();
-            services.AddTransient<IFootballerService, FootballerService>();
+            services.AddScoped<ITeamService, TeamService>();
+            services.AddScoped<IFootballerService, FootballerService>();
 
-            services.AddTransient<IUnitOfWork, UnitOfWork.UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
+
+            //lifetimes -> Transient, Scoped, Singleton
 
             services.AddDbContext<ApplicationDbContext>(x =>
             {
