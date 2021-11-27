@@ -24,6 +24,7 @@ namespace FootballManagerApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ITeamService, TeamService>();
+            services.AddTransient<IFootballerService, FootballerService>();
 
             services.AddDbContext<ApplicationDbContext>(x =>
             {
