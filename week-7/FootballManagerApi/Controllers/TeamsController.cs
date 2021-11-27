@@ -11,9 +11,12 @@ namespace FootballManagerApi.Controllers
     public class TeamsController : ControllerBase
     {
         private readonly ITeamService _teamService;
-        public TeamsController(ITeamService teamService)
+        private readonly IFootballerService _footballerService;
+
+        public TeamsController(ITeamService teamService, IFootballerService footballerService)
         {
             _teamService = teamService;
+            _footballerService = footballerService;
         }
 
         // GET: api/Teams
@@ -39,6 +42,15 @@ namespace FootballManagerApi.Controllers
         {
             await _teamService.UpdateAsync(id, team);
             return NoContent();
+        }
+
+        [HttpPost("{id}/add-footballer")]
+        public async Task<IActionResult> AddFootballer(int id, [FromBody] Footballer footballer)
+        {
+            footballer.Team = await _teamService.GetAsync(id);
+            var createFootballer = await _footballerService.CreateAsync(footballer);
+
+            return Ok(createFootballer);
         }
 
         // POST: api/Teams
