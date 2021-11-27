@@ -1,6 +1,7 @@
-﻿using System;
+﻿using FootballManagerApi.Entities;
+using System;
 
-namespace FootballManagerApi.Entities
+namespace FootballManagerApi.EntityBases
 {
     public class Person
     {
