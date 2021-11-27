@@ -1,4 +1,6 @@
 using FootballManagerApi.Data;
+using FootballManagerApi.ServiceAbstracts;
+using FootballManagerApi.ServiceImplementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,8 +23,13 @@ namespace FootballManagerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ITeamService, TeamService>();
 
-            services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<ApplicationDbContext>(x =>
+            {
+                x.EnableSensitiveDataLogging();
+                x.UseSqlServer(Configuration.GetConnectionString("Default"));
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
