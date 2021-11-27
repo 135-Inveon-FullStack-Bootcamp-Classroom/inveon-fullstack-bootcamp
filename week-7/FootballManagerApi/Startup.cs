@@ -1,6 +1,7 @@
 using FootballManagerApi.Data;
 using FootballManagerApi.ServiceAbstracts;
 using FootballManagerApi.ServiceImplementations;
+using FootballManagerApi.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,8 @@ namespace FootballManagerApi
         {
             services.AddTransient<ITeamService, TeamService>();
             services.AddTransient<IFootballerService, FootballerService>();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             services.AddDbContext<ApplicationDbContext>(x =>
             {

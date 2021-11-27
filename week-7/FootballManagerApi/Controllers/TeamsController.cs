@@ -1,5 +1,5 @@
 ﻿using FootballManagerApi.Entities;
-using FootballManagerApi.ServiceAbstracts;
+using FootballManagerApi.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,20 +10,18 @@ namespace FootballManagerApi.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
-        private readonly ITeamService _teamService;
-        private readonly IFootballerService _footballerService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public TeamsController(ITeamService teamService, IFootballerService footballerService)
+        public TeamsController(IUnitOfWork unitOfWork)
         {
-            _teamService = teamService;
-            _footballerService = footballerService;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Teams
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Team>>> GetTeams()
         {
-            var teams = await _teamService.GetAllWithFootballersAsync();
+            var teams = await _unitOfWork.TeamService.GetAllWithFootballersAsync();
             return Ok(teams);
         }
 
@@ -31,7 +29,7 @@ namespace FootballManagerApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Team>> GetTeam(int id)
         {
-            var team = await _teamService.GetAsync(id);
+            var team = await _unitOfWork.TeamService.GetAsync(id);
             return Ok(team);
         }
 
@@ -40,15 +38,15 @@ namespace FootballManagerApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTeam(int id, Team team)
         {
-            await _teamService.UpdateAsync(id, team);
+            await _unitOfWork.TeamService.UpdateAsync(id, team);
             return NoContent();
         }
 
         [HttpPost("{id}/add-footballer")]
         public async Task<IActionResult> AddFootballer(int id, [FromBody] Footballer footballer)
         {
-            footballer.Team = await _teamService.GetAsync(id);
-            var createFootballer = await _footballerService.CreateAsync(footballer);
+            footballer.Team = await _unitOfWork.TeamService.GetAsync(id);
+            var createFootballer = await _unitOfWork.FootballerService.CreateAsync(footballer);
 
             return Ok(createFootballer);
         }
@@ -58,7 +56,7 @@ namespace FootballManagerApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
-            var createdTeam = await _teamService.CreateAsync(team);
+            var createdTeam = await _unitOfWork.TeamService.CreateAsync(team);
             return Ok(createdTeam);
         }
 
@@ -66,7 +64,7 @@ namespace FootballManagerApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTeam(int id)
         {
-            await _teamService.DeleteAsync(id);
+            await _unitOfWork.TeamService.DeleteAsync(id);
             return NoContent();
         }
     }
