@@ -1,4 +1,5 @@
 ﻿using FootballManagerApi.ServiceAbstracts;
+using System.Threading.Tasks;
 
 namespace FootballManagerApi.UnitOfWork
 {
@@ -6,5 +7,6 @@ namespace FootballManagerApi.UnitOfWork
     {
         public ITeamService TeamService { get; set; }
         public IFootballerService FootballerService { get; set; }
+        Task SaveChangesAsync();
     }
 }

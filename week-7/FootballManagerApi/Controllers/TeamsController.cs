@@ -57,6 +57,7 @@ namespace FootballManagerApi.Controllers
         public async Task<ActionResult<Team>> PostTeam(Team team)
         {
             var createdTeam = await _unitOfWork.TeamService.CreateAsync(team);
+            //await _unitOfWork.SaveChangesAsync();
             return Ok(createdTeam);
         }
 
