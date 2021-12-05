@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FootballManagerApi.ServiceImplementations
 {
+    [Authorize]
     public class FootballerService : IFootballerService
     {
         private readonly ApplicationDbContext _context;
